@@ -12,5 +12,5 @@ jobs:
         uses: actions/checkout@v3.5.2
       - name: Run pwsh script
         run: |
-          pwsh -c "get-children -path . -recurse"
+          pwsh -c "gci . -Recurse | FT PSPath"
           echo "${{ github.directory }}"
