@@ -1,6 +1,6 @@
 name: My first Run
 
-on: [push]
+on: [push,workflow_dispatch]
 
 jobs:
   MyFirstJob:
