@@ -5,6 +5,12 @@ on: [push]
 jobs:
   MyFirstJob:
     runs-on: ubuntu-latest
-    
+
     steps:
       - run: echo "👋 Hello World!"
+      - name: Checkout code
+        uses: actions/checkout@v3.5.2
+      - name: Run pwsh script
+        run: |
+          pwsh -c "get-children -path . -recurse"
+          echo "${{ github.directory }}"
