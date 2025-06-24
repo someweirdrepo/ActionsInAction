@@ -1,0 +1,10 @@
+name: My first Run
+
+on: [push]
+
+jobs:
+  MyFirstJob:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - run: echo "👋 Hello World!"
