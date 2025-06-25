@@ -1,0 +1,35 @@
+name: Invoke Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      owner:
+        description: "Owner"
+        required: true
+        type: string
+      repository:
+        description: "Repository"
+        required: true
+        type: string
+
+jobs:
+  run-tests:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show inputs
+        run: |
+          echo "Owner: ${{ inputs.owner }}"
+          echo "Repository: ${{ inputs.repository }}"
+
+      - name: Invoke repository_dispatch
+        env:
+          GH_TOKEN: ${{ secrets.DEPLOY }}  # Personal Access Token (not GITHUB_TOKEN)
+        run: |
+          curl \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: token $GH_TOKEN" \
+            -H "Content-Type: application/json" \
+            https://api.github.com/repos/${{ inputs.owner }}/${{ inputs.repository }}/dispatches \
+            -d '{"event_type":"event1","client_payload":{"message":"Triggered from Invoke Workflow"}}'
