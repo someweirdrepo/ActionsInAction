@@ -1,6 +1,8 @@
 name: My first Run
 
 on:
+  repository_dispatch:
+    types: [event1, event2]
   workflow_dispatch:
     inputs:
       homedrive:
