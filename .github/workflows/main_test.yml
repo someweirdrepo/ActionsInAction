@@ -53,7 +53,7 @@ jobs:
     steps:
       - run: echo "👋 Hello World!"
       - name: Checkout code
-        uses: actions/checkout@v3.5.2
+        uses: actions/checkout@v4.2.2
       - name: Run pwsh script
         run: |
           pwsh -c "gci . -Recurse | FT PSPath"
