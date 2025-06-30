@@ -52,7 +52,7 @@ jobs:
       - run: echo "👋 Hello World!"
       
       - name: Checkout
-        uses: actions/checkout@v4 
+        uses: actions/checkout@v4.2.2 
       
       - name: List files in repository
         run: |
